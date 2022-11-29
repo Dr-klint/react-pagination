@@ -8,7 +8,7 @@ function App() {
     <div >
       <Navigation/>
       <FilterCountry/>
-      <FetchCountry/>
+      <FetchCountry input='all'/>
     </div>
   );
 }

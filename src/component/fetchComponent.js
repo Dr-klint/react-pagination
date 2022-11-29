@@ -1,9 +1,5 @@
-export function fetchApi(input){
-     fetch(`https://restcountries.com/v3.1/${input}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const arr = [];
-        data.map((item) => arr.push(item));
-        return arr
-      }).catch(e=>console.log(e))
+export async function fetchApi(input) {
+  const res = await fetch(`https://restcountries.com/v3.1/${input}`);
+  const data = await res.json();
+  return data;
 }

@@ -4,21 +4,23 @@ import List from "./list";
 import Pagination from "./pagination";
 import { fetchApi } from "./fetchComponent";
 
-function FetchCountry() {
+function FetchCountry({input}) {
   const [loadedMeetUp, setLoadedMeetUp] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-const inputData = fetchApi('all')
-console.log(inputData);
-  useEffect(() => {
-    setLoadedMeetUp(fetchApi("all"));
+
+  useEffect( () => {
+    async function fetchData() {
+      let data = await fetchApi(input);
+      setLoadedMeetUp(data);
+    }
+    fetchData();
   }, []);
 
   const data = Paginate(loadedMeetUp, currentPage, 10);
-  console.log(data);
 
   return (
     <div>
