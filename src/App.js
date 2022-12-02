@@ -1,15 +1,14 @@
-import FetchCountry from "./component/countryFetch";
-import FilterCountry from "./component/filterCountry";
-import Navigation from "./component/navigation";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AllCountries from "./pages/AllCountries";
 import "./index.css";
 
 function App() {
   return (
-    <div >
-      <Navigation/>
-      <FilterCountry/>
-      <FetchCountry input='all'/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<AllCountries />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

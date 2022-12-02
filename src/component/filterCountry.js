@@ -4,9 +4,7 @@ import {
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
-import FetchCountry from "./countryFetch";
-import { fetchApi } from "./fetchComponent";
-import List from "./list";
+import FetchApi from "./fetchComponent";
 
 function FilterCountry() {
   const [filterOption, setFilterOption] = useState(false);
@@ -21,15 +19,11 @@ function FilterCountry() {
       : setFilterOption(true);
   }
 
-  async function handleSearchCountries(e) {
+function handleSearchCountries(e) {
     e.preventDefault();
     const value = inputCountry.current.value;
     const total = `name/${value}`;
-    const data = await fetchApi(total);
-    console.log(data);
-
-    // return loadSearch && console.log(total);
-    return loadSearch && <List data={data} />;
+    return loadSearch && <FetchApi input={total}/>
   }
 
   useEffect(() => {

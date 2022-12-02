@@ -8,7 +8,7 @@ function Pagination(props) {
   const pages = _.range(1, pageCount + 1);
   return (
     <div className="flex m-5">
-      {pages.map((page) => {
+      {pages.map((page) => { 
         return (
           <p
             key={page}
