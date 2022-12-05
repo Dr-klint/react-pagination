@@ -1,4 +1,4 @@
-import FetchApi from "../component/fetchComponent";
+import FetchCountry from "../component/countryFetch";
 import FilterCountry from "../component/filterCountry";
 import Navigation from "../component/navigation";
 
@@ -7,7 +7,7 @@ function AllCountries() {
     <div>
       <Navigation />
       <FilterCountry />
-      <FetchApi input="all" />
+      <FetchCountry input='all'/>
     </div>
   );
 }

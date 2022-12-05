@@ -3,13 +3,16 @@ import {
   faMagnifyingGlass,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useRef, useState } from "react";
-import FetchApi from "./fetchComponent";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { replace } from "lodash";
+
 
 function FilterCountry() {
   const [filterOption, setFilterOption] = useState(false);
-  const [loadSearch, setLoadSearch] = useState(false);
+  let navigate = useNavigate();
   const inputCountry = useRef();
+ 
 
   function handlerFilterOption() {
     filterOption === false
@@ -19,16 +22,18 @@ function FilterCountry() {
       : setFilterOption(true);
   }
 
-function handleSearchCountries(e) {
+  function handleSearchCountries(e) {
     e.preventDefault();
     const value = inputCountry.current.value;
-    const total = `name/${value}`;
-    return loadSearch && <FetchApi input={total}/>
+    navigate(`/search-countries/${value}`);
+    // window.location.reload()
   }
 
-  useEffect(() => {
-    setLoadSearch(true);
-  }, []);
+  function handleFilterCountries(e) {
+    const region = e.target.textContent;
+    navigate(`/filter-countries/${region}`);
+    // window.location.reload()
+  }
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between items-start">
@@ -47,10 +52,11 @@ function handleSearchCountries(e) {
       </div>
       <div className="mr-0 md:mr-10 md:mt-14 mt-10 ml-4 hover:cursor-pointer w-auto">
         <div className="relative">
-          <div className="flex items-center shadow-md bg-white dark:bg-darkBackground pr-1">
-            <p onClick={handlerFilterOption} className="p-3 dark:text-darkText">
-              Filter by Region
-            </p>
+          <div
+            className="flex items-center shadow-md bg-white dark:bg-darkBackground pr-1"
+            onClick={handlerFilterOption}
+          >
+            <p className="p-3 dark:text-darkText">Filter by Region</p>
             <FontAwesomeIcon
               className="p-2 dark:text-darkText"
               icon={faChevronDown}
@@ -59,16 +65,26 @@ function handleSearchCountries(e) {
           <div
             className={
               filterOption === false
-                ? "shadow-sm bg-white dark:bg-darkBackground p-3 z-10 transition-all absolute top-14 pl-4 pr-24 hidden "
-                : "shadow-sm bg-white dark:bg-darkBackground p-3 z-10 transition-all absolute top-14 pl-4 pr-24  "
+                ? "shadow-md bg-white dark:bg-darkBackground  z-10 transition-all absolute top-14  hidden "
+                : "shadow-md bg-white dark:bg-darkBackground  z-10 transition-all absolute top-14   "
             }
           >
-            <ul className="dark:text-darkText">
-              <li>Africa</li>
-              <li>America</li>
-              <li>Asia</li>
-              <li>Europe</li>
-              <li>Oceania</li>
+            <ul className="dark:text-darkText " onClick={handleFilterCountries}>
+              <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
+                Africa
+              </li>
+              <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
+                America
+              </li>
+              <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
+                Asia
+              </li>
+              <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
+                Europe
+              </li>
+              <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
+                Oceania
+              </li>
             </ul>
           </div>
         </div>
