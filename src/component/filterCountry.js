@@ -5,14 +5,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { replace } from "lodash";
 
-
-function FilterCountry() {
+function FilterCountry({ handleFunctionFilter, handleFunctionSearch }) {
   const [filterOption, setFilterOption] = useState(false);
   let navigate = useNavigate();
   const inputCountry = useRef();
- 
 
   function handlerFilterOption() {
     filterOption === false
@@ -22,18 +19,18 @@ function FilterCountry() {
       : setFilterOption(true);
   }
 
-  function handleSearchCountries(e) {
-    e.preventDefault();
-    const value = inputCountry.current.value;
-    navigate(`/search-countries/${value}`);
-    // window.location.reload()
-  }
+  // function handleSearchCountries(e) {
+  //   e.preventDefault();
+  //   const value = inputCountry.current.value;
+  //   navigate(`/search-countries/${value}`);
+  //   // window.location.reload()
+  // }
 
-  function handleFilterCountries(e) {
-    const region = e.target.textContent;
-    navigate(`/filter-countries/${region}`);
-    // window.location.reload()
-  }
+  // function handleFilterCountries(e) {
+  //   const region = e.target.textContent;
+  //   navigate(`/filter-countries/${region}`);
+  //   // window.location.reload()
+  // }
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between items-start">
@@ -42,7 +39,13 @@ function FilterCountry() {
           className="py-2 px-4 rounded -m-1 dark:text-darkText"
           icon={faMagnifyingGlass}
         />
-        <form className=" inline" onSubmit={handleSearchCountries}>
+        <form
+          className=" inline"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleFunctionSearch(inputCountry.current.value);
+          }}
+        >
           <input
             placeholder="Search for a Country "
             className="px-5 rounded py-3 dark:bg-darkBackground dark:text-darkText outline-none focus:border-none"
@@ -69,12 +72,17 @@ function FilterCountry() {
                 : "shadow-md bg-white dark:bg-darkBackground  z-10 transition-all absolute top-14   "
             }
           >
-            <ul className="dark:text-darkText " onClick={handleFilterCountries}>
+            <ul
+              className="dark:text-darkText "
+              onClick={(e) => {
+                handleFunctionFilter(e.target.textContent);
+              }}
+            >
               <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
                 Africa
               </li>
               <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
-                America
+                Americas
               </li>
               <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
                 Asia
@@ -83,7 +91,7 @@ function FilterCountry() {
                 Europe
               </li>
               <li className="hover:bg-slate-300 pl-4 pr-[5.9rem] w-full p-[0.25rem]">
-                Oceania
+                Antarctic
               </li>
             </ul>
           </div>

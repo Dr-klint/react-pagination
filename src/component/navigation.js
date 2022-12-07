@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+
 
 function Navigation() {
-  let navigate = useNavigate()
+
 
   function goHome(){
-    navigate('/')
+    window.location.reload()
   }
   return (
     <header>
