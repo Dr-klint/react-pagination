@@ -4,11 +4,11 @@ import {
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function FilterCountry({ handleFunctionFilter, handleFunctionSearch }) {
   const [filterOption, setFilterOption] = useState(false);
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const inputCountry = useRef();
 
   function handlerFilterOption() {
