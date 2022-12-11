@@ -17,8 +17,8 @@ function Pagination(props) {
             }}
             className={
               page === currentPage
-                ? "p-4 border-2 bg-blue-600 hover:bg-gray-600 hover:text-white rounded hover:cursor-pointer mr-2 mb-2"
-                : "p-4 border-2 bg-gray-400 hover:bg-gray-600 hover:text-white rounded hover:cursor-pointer mr-2 mb-2"
+                ? "p-1 border-2 bg-blue-600 hover:bg-gray-600 hover:text-white rounded-full hover:cursor-pointer mr-2 mb-2"
+                : "p-1 border-2 bg-gray-400 hover:bg-gray-600 hover:text-white rounded-full hover:cursor-pointer mr-2 mb-2"
             }
           >
             {page}

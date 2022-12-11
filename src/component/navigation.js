@@ -45,7 +45,7 @@ function Navigation(props) {
                   darkMode ? "font-semibold text-darkText " : "font-semibold  "
                 }
               >
-                Dark Mode
+                {darkMode ? 'Light Mode' : 'Dark Mode'}
               </p>
             </div>
           </div>
