@@ -1,7 +1,7 @@
 import Boundaries from "./boundaries";
 function ViewList({ data, handleBorderClick }) {
   return (
-    <div>
+    <div className=" dark:text-darkText">
       {data.map((item, i, arr) => {
         return (
           <div className="grid lg:grid-cols-2 grid-cols-1 mt-14 gap-8 " key={i}>

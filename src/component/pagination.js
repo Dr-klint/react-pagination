@@ -7,22 +7,22 @@ function Pagination(props) {
   if (pageCount === 1) return null;
   const pages = _.range(1, pageCount + 1);
   return (
-    <div className="flex m-5">
+    <div className="flex flex-wrap m-5 pb-6">
       {pages.map((page) => { 
         return (
-          <p
+          <div
             key={page}
             onClick={() => {
               onPageChange(page);
             }}
             className={
               page === currentPage
-                ? "p-4 border-2 bg-blue-600 hover:bg-gray-600 hover:text-white rounded"
-                : "p-4 border-2 bg-gray-400 hover:bg-gray-600 hover:text-white rounded"
+                ? "p-4 border-2 bg-blue-600 hover:bg-gray-600 hover:text-white rounded hover:cursor-pointer mr-2 mb-2"
+                : "p-4 border-2 bg-gray-400 hover:bg-gray-600 hover:text-white rounded hover:cursor-pointer mr-2 mb-2"
             }
           >
             {page}
-          </p>
+          </div>
         );
       })}
     </div>

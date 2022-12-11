@@ -33,7 +33,7 @@ function FilterCountry({ handleFunctionFilter, handleFunctionSearch }) {
   // }
 
   return (
-    <div className="flex flex-col md:flex-row md:justify-between items-start">
+    <div className="flex flex-col md:flex-row md:justify-between items-start dark:bg-darkElements">
       <div className="pl-4 ml-3 md:pl-5 md:ml-6 mt-14 shadow-md bg-white dark:bg-darkBackground w-auto">
         <FontAwesomeIcon
           className="py-2 px-4 rounded -m-1 dark:text-darkText"

@@ -7,7 +7,7 @@ function List({ data }) {
     navigate(`/viewInfo/${data}`);
   }
   return (
-    <div className="grid lg:grid-cols-4 md:grid-cols-2  mt-12 px-10 gap-10 ">
+    <div className="grid lg:grid-cols-4 md:grid-cols-2  mt-12 px-10 gap-10  ">
       {data.map((el, i) => {
         return (
           <div
