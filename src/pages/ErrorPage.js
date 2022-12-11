@@ -3,6 +3,7 @@ import Navigation from "../component/navigation";
 import { useState } from "react";
 import Error from "../component/error";
 
+
 function ErrorPage() {
   const [darkMode, setDarkMode] = useState(true);
   const { id } = useParams();
@@ -14,6 +15,7 @@ function ErrorPage() {
   return (
     <div className={`h-full w-full ${darkMode ? "dark" : ""}`}>
       <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode}>
+       
         <Error error={id}/>
       </Navigation>
     </div>

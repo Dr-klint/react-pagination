@@ -8,7 +8,7 @@ function BackButton() {
     navigate("/");
   }
   return (
-    <div className="mt-14 pl-10">
+    <div className="mt-14 pl-10 ">
       <button
         onClick={goBack}
         className="shadow-md px-8 py-3 dark:bg-darkBackground"

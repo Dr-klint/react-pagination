@@ -4,11 +4,9 @@ import {
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
 function FilterCountry({ handleFunctionFilter, handleFunctionSearch }) {
   const [filterOption, setFilterOption] = useState(false);
-  // let navigate = useNavigate();
   const inputCountry = useRef();
 
   function handlerFilterOption() {
@@ -19,18 +17,6 @@ function FilterCountry({ handleFunctionFilter, handleFunctionSearch }) {
       : setFilterOption(true);
   }
 
-  // function handleSearchCountries(e) {
-  //   e.preventDefault();
-  //   const value = inputCountry.current.value;
-  //   navigate(`/search-countries/${value}`);
-  //   // window.location.reload()
-  // }
-
-  // function handleFilterCountries(e) {
-  //   const region = e.target.textContent;
-  //   navigate(`/filter-countries/${region}`);
-  //   // window.location.reload()
-  // }
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between items-start dark:bg-darkElements">
@@ -44,6 +30,7 @@ function FilterCountry({ handleFunctionFilter, handleFunctionSearch }) {
           onSubmit={(e) => {
             e.preventDefault();
             handleFunctionSearch(inputCountry.current.value);
+            inputCountry.current.value = ''
           }}
         >
           <input
